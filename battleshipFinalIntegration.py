@@ -168,12 +168,18 @@ ship_col = random_col(board)
 
 print()
 
-# Loop that keeps track of guesses and lists user input
+# Got help from the Loops page on Prof. Vanselow's course website.
 def main():
     num_of_guess = 1
     while (num_of_guess):
-        guess_col = int(input("Guess column: "))
-        guess_row = int(input("Guess row: "))
+        got_good_input = False
+        while got_good_input == False:
+            try:
+                guess_col = int(input("Guess column: "))
+                guess_row = int(input("Guess row: "))
+                got_good_input = True
+            except ValueError:
+                print("That was not a valid number. Try again private...")
         num_of_guess += 1
         if (guess_col == ship_col and ship_row == ship_row):
             print("Hit! You Sunk the enemies Battleship!")
@@ -193,14 +199,14 @@ def main():
         elif (num_of_guess > 11):
             print("Game over. You have run out of guesses.")
             print_board(board)
-            print('GAME OVER.')
             break
         else:
+            print("You missed the enemy battleship.")
             board[guess_row][guess_col] = "X"
             print_board(board)
             print("Guesses Left: ", 11 - num_of_guess)
+            print('GAME OVER.')
 main()
-
 
 
 
