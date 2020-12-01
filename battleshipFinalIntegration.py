@@ -175,7 +175,6 @@ def main():
         guess_col = int(input("Guess column: "))
         guess_row = int(input("Guess row: "))
         num_of_guess += 1
-        # When player hits target they win the game
         if (guess_col == ship_col and ship_row == ship_row):
             print("Hit! You Sunk the enemies Battleship!")
             board[guess_row][guess_col] = "*"
@@ -184,32 +183,19 @@ def main():
             print()
             print('GAME OVER! YOU\'VE WON!')
             break
-        """ When player guesses 5 or above it results as off the
-            player board, losing a guess.
-        """
         elif (guess_col >= 5 or guess_row >= 5):
             print("Your guess is invalid, make sure your guess "
                   "is on the board.")
             print("Guesses Left: ", 11 - num_of_guess)
-        """ When player guesses at an already guessed spot, it
-            results as invalid and a lost guess
-        """
         elif board[guess_row][guess_col] == "X":
             print("You have already guessed that area.")
             print("Guesses Left: ", 11 - num_of_guess)
-        """ Else, if the player uses all 10 guesses the computer
-            wins.
-        """
         elif (num_of_guess > 11):
             print("Game over. You have run out of guesses.")
             print_board(board)
             print('GAME OVER.')
             break
         else:
-        """ If you miss the enemy ship the spot selected is marked
-            with an 'X' and a guess is deducted.
-        """
-            print("You missed the enemy battleship.")
             board[guess_row][guess_col] = "X"
             print_board(board)
             print("Guesses Left: ", 11 - num_of_guess)
