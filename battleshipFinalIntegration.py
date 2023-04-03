@@ -14,9 +14,7 @@ finish and you will have won!"""
 # Introduction
 # Function that receives Player Name
 player_name = input("Please enter your first name to get started. ")
-logging.info(f'Player name entered: {player_name}')
 print("Fleet Admiral Wilson: Welcome aboard", player_name + "!")
-logging.info(f'Player {player_name} welcomed onboard.')
 
 # Gather player experience
 """
@@ -24,87 +22,48 @@ logging.info(f'Player {player_name} welcomed onboard.')
 * If no player must go through practice level 
 """
 while True:
-  player_experience  = input("Fleet Admiral Wilson: Have you played battleship"
-                             " before? Enter yes/no : ")
-  logging.info(f'Player experience entered: {player_experience}')
-  if player_experience  == "yes":
-    print("Fleet Admiral Wilson: Great!", " We need more soilders like you if"
-                                    " we're going to win this war.", sep="-->")
-    """ sep="-->" gets rid of the whitespace in between the two strings 
-and places the arrow within the quotes """
-    logging.info(f'Player has played battleship before.')
-    break
-  elif player_experience == "no":
-    print("Fleet Admiral Wilson: Well Private we've got some learning to do!"
-          " The goal of the game is to sink the enemies battleship!")
-    logging.info(f'Player has not played battleship before.')
-    break
-  else:
-    print("Error. Make sure you enter either yes or no.")
-    logging.warning('Invalid input received for player experience.')
+    player_experience = input("Fleet Admiral Wilson: Have you played battleship before? Enter yes/no: ").lower()
+    if player_experience in ["yes", "no"]:
+        if player_experience == "yes":
+            print("Fleet Admiral Wilson: Great! We need more soldiers like you if we're going to win this war.")
+        else:
+            print("Fleet Admiral Wilson: Well Private we've got some learning to do! The goal of the game is to sink the enemies battleship!")
+        break
+    else:
+        print("Error. Make sure you enter either yes or no.")
 
 # Testing your sea legs
 while True:
-  sea_sickness = (input("Fleet Admiral Wilson: Do you get sea sick easily son?"
-                        " Enter yes/no : "))
-  logging.info(f'Player sea sickness entered: {sea_sickness}')
-  if sea_sickness == "yes":
-    print("Fleet Admiral Wilson: You're going to have to toughen up Private!"
-          " Because we're going to the roughest of seas!"
-          " Now drop and give me 20!")
-    logging.info(f'Player gets sea sick easily.')
-    break
-  elif sea_sickness == "no":
-    print("Fleet Admiral Wilson: Well it dosen\'t matter Private!"
-          " Because we're headed straight towards the roughest of seas!")
-    logging.info(f'Player does not get sea sick easily.')
-    break
-  else:
-    print("Error. Make sure you enter either yes or no.")
-    logging.warning('Invalid input received for sea sickness.')
+    sea_sickness = input("Fleet Admiral Wilson: Do you get sea sick easily son? Enter yes/no: ").lower()
+    if sea_sickness in ["yes", "no"]:
+        if sea_sickness == "yes":
+            print("Fleet Admiral Wilson: You're going to have to toughen up Private! Because we're going to the roughest of seas! Now drop and give me 20!")
+        else:
+            print("Fleet Admiral Wilson: Well it doesn't matter Private! Because we're headed straight towards the roughest of seas!")
+        break
+    else:
+        print("Error. Make sure you enter either yes or no.")
 
 print()
 print("Fleet Admiral Wilson: We will go over the official rules very soon.")
-print("Fleet Admiral Wilson: For now, let's pick what team you"
-      " would like to be on.")
+print("Fleet Admiral Wilson: For now, let's pick what team you would like to be on.")
 
 # Red or Blue Team <<<<
 while True:
-  team_color = input("Please pick your team. Enter Red or Blue: ")
-  logging.info(f'Team color selected: {team_color}')
-  if (team_color == "Red"):
-    print(" ")
-    print("Fleet Admiral Wilson: Nice choice", player_name + ".", "You will be"
-                            " going against your arch rivals, the Blue Team.")
-    logging.info(f'{player_name} selected Red team.')
-    break
-  elif (team_color == "Blue"):
-    print()
-    print("Fleet Admiral Wilson: Great pick", player_name + ".", "You will be"
-                            " going against your arch rivals, the Red Team.")
-    break
-  else:
-    """ The int(3) prints the "Error" message three times because it
-     is being multiplied """
-    print("Error! " * int(3), "Make sure your spelling is correct.")
+    team_color = input("Please pick your team. Enter Red or Blue: ").capitalize()
+    if team_color in ["Red", "Blue"]:
+        print(" ")
+        print(f"Fleet Admiral Wilson: Nice choice, {player_name}. You will be going against your arch-rivals, the {team_color} Team.")
+        break
+    else:
+        print("Error! Make sure your spelling is correct.")
 
 load_gameboard = input("Press any key to load the game board: ")
 
 x = "LETS BEGIN:"
 print(x, end=" ")
-print("Fleet Admiral Wilson: Now that you\'re all set up, let\'s show"
-      " you the game board!")
+print("Fleet Admiral Wilson: Now that you're all set up, let's show you the game board!")
 print()
-number = 0
-while (number < 100) and (number >= 0):
-  number = number + 1
-  print("Loading:", number, "%")
-print("Finished.")
-print()
-
-""" The print_board variable holds the string "o" and multiplies that 
-string by 5.While being introduced to the range function that creates 5 rows. 
- Therefore creating a 5x5 game board which is exactly what we want. """
 
 # Function that prints layout of the board
 board = []
