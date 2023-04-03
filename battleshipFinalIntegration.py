@@ -1,3 +1,7 @@
+import logging
+
+logging.basicConfig(filename='battleship.log', level=logging.DEBUG)
+
 # Luke Preston
 """This program is designed to be a similar replication of the well known game
 "Battleship".
@@ -10,7 +14,9 @@ finish and you will have won!"""
 # Introduction
 # Function that receives Player Name
 player_name = input("Please enter your first name to get started. ")
+logging.info(f'Player name entered: {player_name}')
 print("Fleet Admiral Wilson: Welcome aboard", player_name + "!")
+logging.info(f'Player {player_name} welcomed onboard.')
 
 # Gather player experience
 """
@@ -20,34 +26,42 @@ print("Fleet Admiral Wilson: Welcome aboard", player_name + "!")
 while True:
   player_experience  = input("Fleet Admiral Wilson: Have you played battleship"
                              " before? Enter yes/no : ")
+  logging.info(f'Player experience entered: {player_experience}')
   if player_experience  == "yes":
     print("Fleet Admiral Wilson: Great!", " We need more soilders like you if"
                                     " we're going to win this war.", sep="-->")
     """ sep="-->" gets rid of the whitespace in between the two strings 
 and places the arrow within the quotes """
+    logging.info(f'Player has played battleship before.')
     break
   elif player_experience == "no":
     print("Fleet Admiral Wilson: Well Private we've got some learning to do!"
           " The goal of the game is to sink the enemies battleship!")
+    logging.info(f'Player has not played battleship before.')
     break
   else:
     print("Error. Make sure you enter either yes or no.")
+    logging.warning('Invalid input received for player experience.')
 
 # Testing your sea legs
 while True:
   sea_sickness = (input("Fleet Admiral Wilson: Do you get sea sick easily son?"
                         " Enter yes/no : "))
+  logging.info(f'Player sea sickness entered: {sea_sickness}')
   if sea_sickness == "yes":
     print("Fleet Admiral Wilson: You're going to have to toughen up Private!"
           " Because we're going to the roughest of seas!"
           " Now drop and give me 20!")
+    logging.info(f'Player gets sea sick easily.')
     break
   elif sea_sickness == "no":
     print("Fleet Admiral Wilson: Well it dosen\'t matter Private!"
           " Because we're headed straight towards the roughest of seas!")
+    logging.info(f'Player does not get sea sick easily.')
     break
   else:
     print("Error. Make sure you enter either yes or no.")
+    logging.warning('Invalid input received for sea sickness.')
 
 print()
 print("Fleet Admiral Wilson: We will go over the official rules very soon.")
@@ -57,10 +71,12 @@ print("Fleet Admiral Wilson: For now, let's pick what team you"
 # Red or Blue Team <<<<
 while True:
   team_color = input("Please pick your team. Enter Red or Blue: ")
+  logging.info(f'Team color selected: {team_color}')
   if (team_color == "Red"):
     print(" ")
     print("Fleet Admiral Wilson: Nice choice", player_name + ".", "You will be"
                             " going against your arch rivals, the Blue Team.")
+    logging.info(f'{player_name} selected Red team.')
     break
   elif (team_color == "Blue"):
     print()
